@@ -19,8 +19,6 @@ function Resize() {
 
     canvas.width = config.width;
     canvas.height = config.height;
-
-    config.ctx = canvas.getContext("2d");
 }
 
 // Eventos
@@ -33,12 +31,34 @@ function Start() {
     console.log("starting");
     _screen.append(canvas);
 
+    config.ctx = canvas.getContext("2d");
+
     Resize();
+}
+
+function Update(delta: number) {
+
+}
+
+function Render() {
+    if (!config.ctx) return;
+    config.ctx.clearRect(0, 0, config.width, config.height);
+}
+
+let lastTime = 0;
+function gameLoop(timestamp: number) {
+    const delta = timestamp - lastTime;
+    lastTime = timestamp;
+
+    Update(delta);
+    Render();
+
+    requestAnimationFrame(gameLoop);
 }
 
 // Inicialização
 function main() {
     Start();
-    //gameLoop(0);
+    gameLoop(0);
 }
 main();
