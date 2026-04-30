@@ -1,13 +1,9 @@
-interface Size {
-    w: number;
-    h: number;
-}
-
-class Renderer {
+export class Renderer {
     private static _ctx: CanvasRenderingContext2D | null;
     private static _screenSize: Size = { w: window.innerWidth, h: window.innerHeight };
 
-    constructor() {}
+
+    private constructor() {}
 
     // Metodos
     public static clear() {
@@ -15,13 +11,11 @@ class Renderer {
         Renderer._ctx.clearRect(0, 0, Renderer._screenSize.w, Renderer._screenSize.h);
     }
 
-    // Loops
-    public static Start() {
-
-    }
-
-    public static Update(delta: number) {
-
+    public static drawSprite(sprite: Sprite, pos: Position, size: Size) {
+        if(!Renderer._ctx) return;
+        const img = document.createElement('img');
+        img.src = '../../../public/assets/sprites/knight1.png';
+        Renderer._ctx.drawImage(img, pos.x, pos.y, size.w, size.h);
     }
 
     // Getters/Setters

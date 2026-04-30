@@ -1,3 +1,5 @@
+import { Renderer } from "./rendering/rendering.js";
+
 interface configInterface {
     width: number,
     height: number,
@@ -40,9 +42,13 @@ function Update(delta: number) {
 
 }
 
+let x = 0;
 function Render() {
     if (!config.ctx) return;
     config.ctx.clearRect(0, 0, config.width, config.height);
+
+    Renderer.drawSprite({id: 1}, {x, y:100}, {w: 20, h:20});
+    x++;
 }
 
 let lastTime = 0;
