@@ -12,9 +12,9 @@ export class Renderer {
     }
 
     public static drawSprite(sprite: Sprite, pos: Position, size: Size) {
-        if(!Renderer._ctx) return;
+        if(!Renderer._ctx) return;    
         const img = document.createElement('img');
-        img.src = '../../../public/assets/sprites/knight1.png';
+        img.src = '/sprites/knight1.png';
         Renderer._ctx.drawImage(img, pos.x, pos.y, size.w, size.h);
     }
 

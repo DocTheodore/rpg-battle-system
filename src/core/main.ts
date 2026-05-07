@@ -34,6 +34,7 @@ function Start() {
     _screen.append(canvas);
 
     config.ctx = canvas.getContext("2d");
+    Renderer.ctx = config.ctx!;
 
     Resize();
 }
