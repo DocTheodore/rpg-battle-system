@@ -11,11 +11,9 @@ export class Renderer {
         Renderer._ctx.clearRect(0, 0, Renderer._screenSize.w, Renderer._screenSize.h);
     }
 
-    public static drawSprite(sprite: Sprite, pos: Position, size: Size) {
+    public static drawSprite(sprite: HTMLImageElement, pos: Position, size: Size) {
         if(!Renderer._ctx) return;    
-        const img = document.createElement('img');
-        img.src = '/sprites/knight1.png';
-        Renderer._ctx.drawImage(img, pos.x, pos.y, size.w, size.h);
+        Renderer._ctx.drawImage(sprite, pos.x, pos.y, size.w, size.h);
     }
 
     // Getters/Setters

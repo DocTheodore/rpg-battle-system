@@ -1,3 +1,4 @@
+import { Assets } from "./rendering/assetManager.js";
 import { Renderer } from "./rendering/rendering.js";
 
 interface configInterface {
@@ -35,6 +36,7 @@ function Start() {
 
     config.ctx = canvas.getContext("2d");
     Renderer.ctx = config.ctx!;
+    Assets.loadSprite('player1', '/sprites/knight1.png');
 
     Resize();
 }
@@ -48,7 +50,7 @@ function Render() {
     if (!config.ctx) return;
     config.ctx.clearRect(0, 0, config.width, config.height);
 
-    Renderer.drawSprite({id: 1}, {x, y:100}, {w: 20, h:20});
+    Renderer.drawSprite(Assets.sprite.get('player1')!, {x, y:100}, {w: 20, h:20});
     x++;
 }
 
